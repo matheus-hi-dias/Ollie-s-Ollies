@@ -1,0 +1,53 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://sprites/character/run/Animação1.png" type="Texture" id=1]
+[ext_resource path="res://script/Ollie.gd" type="Script" id=2]
+[ext_resource path="res://sprites/character/run/Animação2.png" type="Texture" id=3]
+[ext_resource path="res://sprites/character/jump/Animação11.png" type="Texture" id=4]
+[ext_resource path="res://sprites/character/fall/Animação queda4.png" type="Texture" id=5]
+[ext_resource path="res://sprites/character/jump/Animação10.png" type="Texture" id=6]
+[ext_resource path="res://sprites/character/jump/Animação7.png" type="Texture" id=7]
+[ext_resource path="res://sprites/character/jump/Animação8.png" type="Texture" id=8]
+[ext_resource path="res://sprites/character/jump/Animação9.png" type="Texture" id=9]
+[ext_resource path="res://sprites/character/fall/Animação queda1.png" type="Texture" id=10]
+[ext_resource path="res://sprites/character/jump/Animação12.png" type="Texture" id=11]
+[ext_resource path="res://sprites/character/Animação3.png" type="Texture" id=12]
+[ext_resource path="res://sprites/character/fall/Animação queda2.png" type="Texture" id=13]
+[ext_resource path="res://sprites/character/fall/Animação queda3.png" type="Texture" id=14]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 46.9025, 111.186 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "andando",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 5 ) ],
+"loop": false,
+"name": "morte",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 11 ) ],
+"loop": false,
+"name": "pulo",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "parado",
+"speed": 5.0
+} ]
+
+[node name="Ollie" type="Area2D"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "parado"
+playing = true
