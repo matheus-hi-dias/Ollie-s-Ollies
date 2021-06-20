@@ -9,7 +9,6 @@ func _ready():
 func _process(delta):
 	if not get_parent().comecou:
 		return
-	
 	parallax_offset -= get_node("/root/Main").velocidade * -delta
 	set_scroll_offset(parallax_offset)
 	

@@ -17,7 +17,7 @@ func _ready():
 func _physics_process(delta):
 	if not main.comecou:
 		return
-	
+		
 	set_position(position + get_node("/root/Main").velocidade * delta)
 	
 	tempo_vida = tempo_vida - delta

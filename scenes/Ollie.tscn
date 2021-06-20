@@ -20,11 +20,6 @@ extents = Vector2( 46.9025, 111.186 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "andando",
-"speed": 6.0
-}, {
 "frames": [ ExtResource( 10 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 5 ) ],
 "loop": false,
 "name": "morte",
@@ -39,6 +34,11 @@ animations = [ {
 "loop": true,
 "name": "parado",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "andando",
+"speed": 6.0
 } ]
 
 [node name="Ollie" type="Area2D"]

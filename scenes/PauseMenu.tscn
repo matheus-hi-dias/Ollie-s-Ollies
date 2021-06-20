@@ -1,0 +1,101 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://sprites/Botões/Tela de pause PNG/Botão Reiniciar1.png" type="Texture" id=2]
+[ext_resource path="res://sprites/Botões/Tela de pause PNG/Botão Reiniciar2.png" type="Texture" id=3]
+[ext_resource path="res://sprites/Botões/Tela de pause PNG/PAUSE.png" type="Texture" id=7]
+[ext_resource path="res://sprites/Botões/Tela de pause PNG/Botão Voltar Ao Jogo2.png" type="Texture" id=12]
+[ext_resource path="res://sprites/Botões/Tela de pause PNG/Botão Sair2.png" type="Texture" id=15]
+[ext_resource path="res://sprites/Botões/Tela de pause PNG/Botão Sair1.png" type="Texture" id=16]
+[ext_resource path="res://sprites/Botões/Tela de pause PNG/Botão Voltar Ao Jogo1.png" type="Texture" id=18]
+[ext_resource path="res://script/PauseMenu.gd" type="Script" id=26]
+
+[node name="PauseMenu" type="Control"]
+pause_mode = 2
+script = ExtResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainContainer" type="MarginContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MainContainer"]
+margin_right = 1280.0
+margin_bottom = 720.0
+
+[node name="LeftPadding" type="MarginContainer" parent="CanvasLayer/MainContainer/HBoxContainer"]
+margin_right = 516.0
+margin_bottom = 720.0
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainContainer/HBoxContainer"]
+margin_left = 520.0
+margin_right = 760.0
+margin_bottom = 720.0
+custom_constants/separation = 20
+
+[node name="TopPadding" type="MarginContainer" parent="CanvasLayer/MainContainer/HBoxContainer/VBoxContainer"]
+margin_right = 240.0
+margin_bottom = 94.0
+size_flags_vertical = 3
+
+[node name="Sprite" type="TextureRect" parent="CanvasLayer/MainContainer/HBoxContainer/VBoxContainer"]
+margin_top = 114.0
+margin_right = 240.0
+margin_bottom = 222.0
+texture = ExtResource( 7 )
+
+[node name="RestartButton" type="TextureButton" parent="CanvasLayer/MainContainer/HBoxContainer/VBoxContainer"]
+margin_top = 242.0
+margin_right = 240.0
+margin_bottom = 350.0
+rect_pivot_offset = Vector2( 120, 54 )
+texture_normal = ExtResource( 2 )
+texture_hover = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitButton" type="TextureButton" parent="CanvasLayer/MainContainer/HBoxContainer/VBoxContainer"]
+margin_top = 370.0
+margin_right = 240.0
+margin_bottom = 478.0
+rect_pivot_offset = Vector2( 120, 54 )
+texture_normal = ExtResource( 16 )
+texture_hover = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackToGameButton" type="TextureButton" parent="CanvasLayer/MainContainer/HBoxContainer/VBoxContainer"]
+margin_top = 498.0
+margin_right = 240.0
+margin_bottom = 606.0
+rect_pivot_offset = Vector2( 120, 54 )
+texture_normal = ExtResource( 18 )
+texture_hover = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BotPadding" type="MarginContainer" parent="CanvasLayer/MainContainer/HBoxContainer/VBoxContainer"]
+margin_top = 626.0
+margin_right = 240.0
+margin_bottom = 720.0
+size_flags_vertical = 3
+
+[node name="RightPadding" type="MarginContainer" parent="CanvasLayer/MainContainer/HBoxContainer"]
+margin_left = 764.0
+margin_right = 1280.0
+margin_bottom = 720.0
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="CanvasLayer/MainContainer/HBoxContainer/VBoxContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainContainer/HBoxContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainContainer/HBoxContainer/VBoxContainer/BackToGameButton" to="." method="_on_BackToGameButton_pressed"]

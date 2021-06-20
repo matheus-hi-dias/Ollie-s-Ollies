@@ -1,0 +1,127 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://sprites/Botões/Tela Salvar Pontuação PNG/cancelar2.png" type="Texture" id=1]
+[ext_resource path="res://sprites/Botões/Tela Salvar Pontuação PNG/cancelar1.png" type="Texture" id=2]
+[ext_resource path="res://sprites/Botões/Tela Salvar Pontuação PNG/Salvar1.png" type="Texture" id=3]
+[ext_resource path="res://sprites/Botões/Tela Salvar Pontuação PNG/Tela Salvar.png" type="Texture" id=4]
+[ext_resource path="res://sprites/Botões/Tela Salvar Pontuação PNG/Salvar2.png" type="Texture" id=5]
+[ext_resource path="res://script/SaveScore.gd" type="Script" id=6]
+[ext_resource path="res://sprites/Fonte/consolaz.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 18
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 18
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 7 )
+
+[node name="SaveScore" type="Control"]
+light_mask = 2
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainContainer" type="MarginContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MainContainer"]
+margin_right = 1280.0
+margin_bottom = 720.0
+
+[node name="LeftPadding" type="MarginContainer" parent="CanvasLayer/MainContainer/HBoxContainer"]
+margin_right = 476.0
+margin_bottom = 720.0
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainContainer/HBoxContainer"]
+margin_left = 480.0
+margin_right = 800.0
+margin_bottom = 720.0
+custom_constants/separation = 20
+
+[node name="TopPadding" type="MarginContainer" parent="CanvasLayer/MainContainer/HBoxContainer/VBoxContainer"]
+margin_right = 320.0
+margin_bottom = 220.0
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MainContainer/HBoxContainer/VBoxContainer"]
+margin_top = 240.0
+margin_right = 320.0
+margin_bottom = 480.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveButton" type="TextureButton" parent="CanvasLayer/MainContainer/HBoxContainer/VBoxContainer/TextureRect"]
+margin_left = 190.0
+margin_top = 170.0
+margin_right = 310.0
+margin_bottom = 224.0
+texture_normal = ExtResource( 3 )
+texture_hover = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CancelButton" type="TextureButton" parent="CanvasLayer/MainContainer/HBoxContainer/VBoxContainer/TextureRect"]
+margin_left = 20.0
+margin_top = 170.0
+margin_right = 180.0
+margin_bottom = 224.0
+texture_normal = ExtResource( 2 )
+texture_hover = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Nome" type="TextEdit" parent="CanvasLayer/MainContainer/HBoxContainer/VBoxContainer/TextureRect"]
+margin_left = 101.0
+margin_top = 36.0
+margin_right = 222.0
+margin_bottom = 65.0
+custom_fonts/font = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pontos" type="Label" parent="CanvasLayer/MainContainer/HBoxContainer/VBoxContainer/TextureRect"]
+modulate = Color( 0, 0, 0, 1 )
+self_modulate = Color( 0, 0, 0, 1 )
+light_mask = 4
+margin_left = 102.0
+margin_top = 93.0
+margin_right = 216.0
+margin_bottom = 114.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BotPadding" type="MarginContainer" parent="CanvasLayer/MainContainer/HBoxContainer/VBoxContainer"]
+margin_top = 500.0
+margin_right = 320.0
+margin_bottom = 720.0
+size_flags_vertical = 3
+
+[node name="RightPadding" type="MarginContainer" parent="CanvasLayer/MainContainer/HBoxContainer"]
+margin_left = 804.0
+margin_right = 1280.0
+margin_bottom = 720.0
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="CanvasLayer/MainContainer/HBoxContainer/VBoxContainer/TextureRect/SaveButton" to="." method="_on_SaveButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainContainer/HBoxContainer/VBoxContainer/TextureRect/CancelButton" to="." method="_on_CancelButton_pressed"]

@@ -28,7 +28,7 @@ func _ready():
 func _physics_process(delta):
 	if not get_parent().comecou:
 		return
-	
+		
 	tempo += delta
 	
 	if tempo >= intervalo_ini:
@@ -40,33 +40,39 @@ func _physics_process(delta):
 		
 		#Decide tempo dos obstáculos
 		var _intervalo = rand_range(intervalo_min, intervalo_max)
-	
+	#Ação de pulo ao clicar
 	if Input.is_action_pressed("pular"):
 		velocidade.y += gravidade * delta
 		$AnimatedSprite.play("pulo")
 	else:
 		velocidade.y += gravidade * delta * modificador_gravidade
-	
+	#Ação de pulo ao segurar botão
 	if Input.is_action_just_pressed("pular") and position == chao:
 		velocidade.y = velocidade_pulo
 		$AnimatedSprite.play("pulo")
+	#Definindo animação de quando boneco alcançar o chão
+	if get_position().y == chao.y:
+		$AnimatedSprite.play("andando")
+	#Pausar com o teclado
+	if Input.is_action_just_pressed("pause") and get_parent().acabou == false:
+		get_parent().pause_Game()
 	
 	position += velocidade * delta
 	
-	
+	#Voltar ao chão
 	if get_position().y > chao.y :
 		set_position(chao)
 		velocidade = Vector2()
-		
+	
+	#Final da partida
 func colidiu(_area):
 	$AnimatedSprite.play("morte")
 	get_parent().comecou = false
 	get_parent().acabou = true
-	
-	
-func _input(event):
-	if event is InputEventKey or event is InputEventMouseButton:
-		if get_parent().acabou and not event.is_echo():
+
+func input():
+	if Input.is_action_just_pressed("pular"):
+		if get_parent().acabou:
 			emit_signal("recomecou")
 			get_parent().acabou = false
 			pass
